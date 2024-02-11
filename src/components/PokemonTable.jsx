@@ -27,7 +27,8 @@ export default function PokemonTable({ pokemon, searchText, pokemonType }) {
     const filteredPokemon = detailedPokemon.filter(poke => {
         const nameMatch = poke.name.toLowerCase().includes(searchText.toLowerCase());
         const typeMatch = pokemonType ? poke.types.some(type => type.type.name === pokemonType) : true;
-        return nameMatch && typeMatch;
+       
+        return nameMatch && typeMatch ;
     });
 
     const rows = filteredPokemon.map(poke => (

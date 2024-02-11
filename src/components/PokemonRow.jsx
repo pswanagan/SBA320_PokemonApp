@@ -1,5 +1,7 @@
 export default function PokemonRow ({ pokemon }){
-
+if (pokemon.sprites.front_default == null){
+    return;
+}
     
        return(
        <tr>
