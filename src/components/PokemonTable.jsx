@@ -1,38 +1,50 @@
-import '../App.css'
+import '../App.css';
 import PokemonRow from './PokemonRow';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 export default function PokemonTable({ pokemon, searchText, pokemonType }) {
-    const rows = [];
-    pokemon.forEach(poke => {
-        if (poke.name.toLowerCase().indexOf(searchText.toLowerCase()) === -1) {
-            return;
-          }
-          
-    
-        poke.types.forEach(t => {
-            if (t != pokemonType){
-                return;
+    const [detailedPokemon, setDetailedPokemon] = useState([]);
+
+    useEffect(() => {
+        async function fetchPokemonDetails() {
+            try {
+                const fetchPromises = pokemon.map(poke => 
+                    axios.get(`https://pokeapi.co/api/v2/pokemon/${poke.name}`)
+                );
+                const responses = await Promise.all(fetchPromises);
+                const pokemonDetails = responses.map(response => response.data);
+                setDetailedPokemon(pokemonDetails);
+            } catch (error) {
+                console.error(error);
             }
-        })
-    
-    
-        rows.push(
-          <PokemonRow 
-            key={poke.name} 
-            pokemon={poke} 
-          />
-        )
-      
-      })
+        }
+
+        fetchPokemonDetails();
+    }, [pokemon]); // Depend on the pokemon prop so it only runs when pokemon prop changes
+
+    // Filter detailedPokemon based on searchText and pokemonType
+    const filteredPokemon = detailedPokemon.filter(poke => {
+        const nameMatch = poke.name.toLowerCase().includes(searchText.toLowerCase());
+        const typeMatch = pokemonType ? poke.types.some(type => type.type.name === pokemonType) : true;
+        return nameMatch && typeMatch;
+    });
+
+    const rows = filteredPokemon.map(poke => (
+        <PokemonRow
+            key={poke.name}
+            pokemon={poke}
+        />
+    ));
 
     return (
         <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-          </tr>
-        </thead>
-        <tbody>{rows}</tbody>
-      </table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                </tr>
+            </thead>
+            <tbody>{rows}</tbody>
+        </table>
     );
 }
