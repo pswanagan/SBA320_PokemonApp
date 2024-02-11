@@ -18,13 +18,8 @@ function App() {
  }, {})
   return (
     <>
-    {
-      pokemon.map(poke => {
-        return (
           <PokemonFilteredTable key={poke.name} pokemon={poke} />
-        )
-      })
-    }
+       
     </>
   )
 }

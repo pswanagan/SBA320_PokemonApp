@@ -1,9 +1,9 @@
-export default function ProductRow (props){
+export default function PokemonRow ({ pokemon }){
 
     
        return(
        <tr>
-           <td>{props.pokemon.name}</td>
+           <td>{pokemon.name}</td>
         
        </tr>
      )

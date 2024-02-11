@@ -8,7 +8,7 @@ export default function PokemonFilteredTable(props ) {
     return(
         <div>
         <SearchBar searchText={searchText} pokemonType={pokemonType} onSearchTextChange={setSearchText} onPokemonTypeChange={setPokemonType}/>
-        <PokemonTable pokemon={props.pokemon} searchText={filterText}  pokemonType={pokemonType} />
+        <PokemonTable pokemon={props.pokemon} searchText={searchText}  pokemonType={pokemonType} />
     </div>
     )
 };

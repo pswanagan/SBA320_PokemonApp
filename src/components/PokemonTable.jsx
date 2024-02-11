@@ -1,5 +1,5 @@
 import '../App.css'
-
+import PokemonRow from './PokemonRow';
 
 export default function PokemonTable({ pokemon, searchText, pokemonType }) {
     const rows = [];
@@ -17,7 +17,7 @@ export default function PokemonTable({ pokemon, searchText, pokemonType }) {
     
     
         rows.push(
-          <ProductRow 
+          <PokemonRow 
             key={poke.name} 
             pokemon={poke} 
           />
