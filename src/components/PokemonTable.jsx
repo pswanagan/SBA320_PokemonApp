@@ -41,7 +41,11 @@ export default function PokemonTable({ pokemon, searchText, pokemonType }) {
         <table>
             <thead>
                 <tr>
+                    <th>Image</th>
                     <th>Name</th>
+                    <th>Base Experience</th>
+                    <th>Height</th>
+                    <th>Weight</th>
                 </tr>
             </thead>
             <tbody>{rows}</tbody>

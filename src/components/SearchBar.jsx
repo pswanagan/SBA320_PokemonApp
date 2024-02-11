@@ -7,6 +7,7 @@ export default function SearchBar ({searchText, onPokemonTypeChange,onSearchText
                <select name="pokemonTypes"  onChange={(e) => onPokemonTypeChange(e.target.value)}>
                 <option value=""></option>
                 <option value="normal">Normal</option>
+                <option value="flying">Flying</option>
                 <option value="fighting">Fighting</option>
                 <option value="poison">Poison</option>
                 <option value="ground">Ground</option>
