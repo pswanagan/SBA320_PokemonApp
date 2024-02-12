@@ -5,6 +5,8 @@ import PokemonFilteredTable from './components/PokemonFilteredTable';
 
 function App() {
   const [pokemon, setPokemon] = useState([]);
+  const [isLoading, setIsLoading] = useState(true); 
+
   useEffect(() => {
     async function getPokemon() {
       try {
@@ -12,18 +14,22 @@ function App() {
         setPokemon(response.data.results);
       } catch (error) {
         console.error(error);
+      } finally {
+        setIsLoading(false); 
       }
     }
     getPokemon();
   }, []); 
 
+  if (isLoading) { 
+    return <div>Loading...</div>;
+  }
+
   return (
     <>
-     
       <PokemonFilteredTable pokemon={pokemon} />
     </>
   );
 }
 
 export default App;
-

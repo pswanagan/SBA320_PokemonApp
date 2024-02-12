@@ -3,6 +3,7 @@ export default function SearchBar ({searchText, onPokemonTypeChange,onSearchText
         <form action="">
             <input type="text" value={searchText}placeholder="Search..." onChange={(e) => onSearchTextChange(e.target.value)}/>
             <br />
+            <br />
             <label htmlFor="pokemonTypes">Search by Pokemon Type:</label>
             &nbsp;
                <select name="pokemonTypes"  onChange={(e) => onPokemonTypeChange(e.target.value)}>
