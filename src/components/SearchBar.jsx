@@ -4,6 +4,7 @@ export default function SearchBar ({searchText, onPokemonTypeChange,onSearchText
             <input type="text" value={searchText}placeholder="Search..." onChange={(e) => onSearchTextChange(e.target.value)}/>
             <br />
             <label htmlFor="pokemonTypes">Search by Pokemon Type:</label>
+            &nbsp;
                <select name="pokemonTypes"  onChange={(e) => onPokemonTypeChange(e.target.value)}>
                 <option value=""></option>
                 <option value="normal">Normal</option>
@@ -25,7 +26,9 @@ export default function SearchBar ({searchText, onPokemonTypeChange,onSearchText
                 <option value="dark">Dark</option>
                 <option value="fairy">Fairy</option>
                </select>
+               &nbsp;&nbsp;&nbsp;
                <label htmlFor="gameNames">Search by Game:</label>
+               &nbsp;
                <select name="gameNames"  onChange={(e) => onGameNameChange(e.target.value)}>
                 <option value=""></option>
                 <option value="red">Red</option>
