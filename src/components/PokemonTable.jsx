@@ -3,7 +3,7 @@ import PokemonRow from './PokemonRow';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-export default function PokemonTable({ pokemon, searchText, pokemonType }) {
+export default function PokemonTable({ pokemon, searchText, pokemonType, gameName }) {
     const [detailedPokemon, setDetailedPokemon] = useState([]);
 
     useEffect(() => {
@@ -27,8 +27,9 @@ export default function PokemonTable({ pokemon, searchText, pokemonType }) {
     const filteredPokemon = detailedPokemon.filter(poke => {
         const nameMatch = poke.name.toLowerCase().includes(searchText.toLowerCase());
         const typeMatch = pokemonType ? poke.types.some(type => type.type.name === pokemonType) : true;
+        const gameMatch = gameName ? poke.game_indices.some(game => game.version.name === gameName) : true;
        
-        return nameMatch && typeMatch ;
+        return nameMatch && typeMatch && gameMatch ;
     });
 
     const rows = filteredPokemon.map(poke => (
@@ -43,8 +44,11 @@ export default function PokemonTable({ pokemon, searchText, pokemonType }) {
             <thead>
                 <tr>
                     <th>Image</th>
+                    <th>Sound</th>
                     <th>Name</th>
                     <th>Base Experience</th>
+                    <th>Abilities</th>
+                    <th>Held Items</th>
                     <th>Height</th>
                     <th>Weight</th>
                 </tr>
