@@ -15,11 +15,11 @@ function App() {
       }
     }
     getPokemon();
-  }, []); // Corrected the dependency array to be an empty array
+  }, []); 
 
   return (
     <>
-      {/* Corrected to pass the entire pokemon array to the PokemonFilteredTable */}
+     
       <PokemonFilteredTable pokemon={pokemon} />
     </>
   );

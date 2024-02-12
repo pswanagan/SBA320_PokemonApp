@@ -8,7 +8,7 @@ export default function PokemonFilteredTable(props ) {
   const [gameName, setGameName] = useState('');
     return(
         <div>
-            <h1><strong>Table of Pokemon</strong></h1>
+            <h1><img src="/pokemon-pokeball.gif" alt="pokeball" /> <strong>Table of Pokemon</strong> <img src="/pokemon-pokeball.gif" alt="pokeball" /></h1>
             <br />
             <br />
         <SearchBar searchText={searchText} onSearchTextChange={setSearchText} onPokemonTypeChange={setPokemonType} onGameNameChange={setGameName}/>
